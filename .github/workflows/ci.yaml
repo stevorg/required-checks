@@ -15,6 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
       - name: Fake test
+        working-directory: ../..
         run: |
           sleep 15
           ./${{ env.COMPONENT }}/src.sh
