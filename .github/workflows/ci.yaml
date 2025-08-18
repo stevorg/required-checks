@@ -8,3 +8,10 @@ jobs:
       - name: Fake test
         run: |
           exit 0
+  release:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fake release
+        run: |
+          exit 0
