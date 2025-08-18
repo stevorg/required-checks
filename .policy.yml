@@ -1,21 +1,12 @@
 policy:
   approval:
-    - test passed
-    - no test required
+    - tests passed
 
 approval_rules:
-  - name: test passed
-    requires:
-      conditions:
-        has_status:
-          conclusions: ["success", "skipped"]
-          statuses:
-            - "test"
+  - name: tests passed
     if:
-      changed_files: &test_required_files
-        paths:
-          - "^.github/.*$"
-
-  - name: no test required
-    if:
-      no_changed_files: *test_required_files
+      has_status:
+        conclusions: ["success", "skipped"]
+        statuses:
+          - "build-test-release (component-a)"
+          - "build-test-release (component-b)"
