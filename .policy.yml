@@ -1,8 +1,7 @@
 policy:
   approval:
-    - and:
-        - test passed
-        - no test required
+    - test passed
+    - no test required
 
 approval_rules:
   - name: test passed
