@@ -2,16 +2,16 @@ on:
   pull_request:
 
 jobs:
-  test:
+  build-test-release:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        component:
+          - component-a
+          - component-b
     steps:
       - name: Fake test
         run: |
-          exit 0
-  release:
-    if: false
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fake release
-        run: |
-          exit 0
+          ./${{ env.COMPONENT }}/src.sh
+        env:
+          COMPONENT: ${{ matrix.component }}
