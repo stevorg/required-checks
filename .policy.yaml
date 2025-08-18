@@ -1,0 +1,12 @@
+policy:
+  approval:
+    - tests passed
+
+approval_rules:
+  - name: tests passed
+    if:
+      has_status:
+        conclusions: ["success", "skipped"]
+        statuses:
+          - "build-test-release (component-a)"
+          - "build-test-release (component-b)"
