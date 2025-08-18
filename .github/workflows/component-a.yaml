@@ -1,0 +1,19 @@
+name: component-a
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/component-a.yaml"
+      - "component-a/**"
+
+jobs:
+  build-test-release:
+    name: build-test-release (component-a)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Fake test
+        run: |
+          sleep 15
+          ./component-a/src.sh
