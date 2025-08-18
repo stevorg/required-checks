@@ -1,21 +1,13 @@
 policy:
   approval:
-    - test passed
-    - no test required
+    - tests passed
 
 approval_rules:
-  - name: test passed
+  - name: tests passed
     requires:
       conditions:
-        has_status:
+        has_workflow_status:
           conclusions: ["success", "skipped"]
           statuses:
-            - "test"
-    if:
-      changed_files: &test_required_files
-        paths:
-          - "^.github/.*$"
-
-  - name: no test required
-    if:
-      no_changed_files: *test_required_files
+            - ".github/workflows/component-a.yaml"
+            - ".github/workflows/component-b.yaml"
