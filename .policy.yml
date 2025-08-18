@@ -1,21 +1,17 @@
 policy:
   approval:
-    - test passed
-    - no test required
+    and:
+      - tests passed
+      - dummy rule
 
 approval_rules:
-  - name: test passed
+  - name: tests passed
+    if:
+      has_status:
+        conclusions: ["success", "skipped"]
+        statuses:
+          - "build-test-release (component-a)"
+          - "build-test-release (component-b)"
+  - name: dummy rule
     requires:
-      conditions:
-        has_status:
-          conclusions: ["success", "skipped"]
-          statuses:
-            - "test"
-    if:
-      changed_files: &test_required_files
-        paths:
-          - "^.github/.*$"
-
-  - name: no test required
-    if:
-      no_changed_files: *test_required_files
+      count: 0
