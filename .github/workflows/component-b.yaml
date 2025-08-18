@@ -1,0 +1,22 @@
+name: component-b
+
+on:
+  pull_request:
+    paths:
+      - "*"
+      - "!*.md"
+      - ".github/workflows/component-b.yaml"
+      - "component-b/**"
+
+jobs:
+  build-test-release:
+    name: build-test-release (component-b)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Fake test
+        run: |
+          sleep 15
+          ./src.sh
+          ./component-b/src.sh
