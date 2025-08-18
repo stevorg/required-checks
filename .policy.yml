@@ -10,11 +10,14 @@ approval_rules:
         has_status:
           conclusions: ["success", "skipped"]
           statuses:
-            - "test"
+            - "build-test-release (component-a)"
+            - "build-test-release (component-b)"
     if:
       changed_files: &test_required_files
         paths:
-          - "^.github/.*$"
+          - "^.github/workflows/ci.yaml"
+          - "^component-a/.*"
+          - "^component-b/.*"
 
   - name: no test required
     if:
